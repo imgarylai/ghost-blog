@@ -19,6 +19,7 @@
     "postinstall": "bash bin/aws-s3.sh && bash bin/themes.sh"
   },
   "dependencies": {
+    "casper": "github:TryGhost/Casper#main",
     "headline": "github:mamayahuhu/Headline#main",
     "ghost": "4.48.9",
     "ghost-storage-adapter-s3": "2.8.0",

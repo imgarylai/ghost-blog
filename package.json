@@ -19,7 +19,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "casper": "github:TryGhost/Casper#main",
+    "headline": "github:mamayahuhu/Headline#main",
     "ghost-cli": "1.23.1",
     "ghost-storage-adapter-s3": "2.8.0",
     "knex-migrator": "5.0.8",

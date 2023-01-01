@@ -1,5 +1,5 @@
 themes=(
-	casper
+	headline
 )
 
 for theme in "${themes[@]}"

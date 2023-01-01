@@ -1,6 +1,6 @@
 {
   "name": "ghost-blog",
-  "version": "5.26.0",
+  "version": "4.48.9",
   "description": "",
   "license": "ISC",
   "author": "",
@@ -15,14 +15,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "ghost install --allow-root --no-check-empty --no-prompt --no-stack --no-setup --no-setup-linux-user --db sqlite3 && rm -rvf content && cp -Rf package.json package-lock.json node_modules versions/*/; rm -rf node_modules ; echo 'INSTALL TO versions/*/ DONE' && cp -Rf versions/*/* .; echo 'INSTALL TO PWD DONE' && rm -rf versions current && bash -x bin/aws-s3.sh && bash -x bin/themes.sh",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "postinstall": "bash bin/aws-s3.sh && bash bin/themes.sh"
   },
   "dependencies": {
     "headline": "github:mamayahuhu/Headline#main",
-    "ghost-cli": "1.23.1",
+    "ghost": "4.48.9",
     "ghost-storage-adapter-s3": "2.8.0",
-    "knex-migrator": "5.0.8",
     "mysql": "2.18.1"
   },
   "devDependencies": {

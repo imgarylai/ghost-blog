@@ -1,1 +1,1 @@
-require('./ghost');
+var ghost = require("ghost");

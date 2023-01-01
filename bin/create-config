@@ -21,6 +21,7 @@ function createConfig() {
         bucket: process.env.S3_BUCKET_NAME,
         region: process.env.S3_BUCKET_REGION,
         assetHost: process.env.S3_ASSET_HOST_URL,
+        acl: process.env.S3_ACL,
       },
     };
   } else {

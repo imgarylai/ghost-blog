@@ -1,0 +1,11 @@
+{
+  "automerge": true,
+  "automergeStrategy": "rebase",
+  "extends": [
+    "config:base"
+  ],
+  "constraints": {
+    "node": "16",
+    "npm": "8"
+  }
+}

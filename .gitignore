@@ -250,3 +250,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Ghost
+config.production.json
+.ghost-cli
+content/themes/*
+current
+versions

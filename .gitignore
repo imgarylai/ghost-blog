@@ -250,3 +250,17 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Ghost
+config.production.json
+.ghost-cli
+content/themes/*
+content/adapters/*
+core
+current
+versions
+ghost.js
+LICENSE
+loggingrc.js
+MigratorConfig.js
+PRIVACY.md
+yarn.lock

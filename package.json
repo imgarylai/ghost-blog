@@ -1,19 +1,47 @@
 {
   "name": "ghost-blog",
-  "version": "1.0.0",
+  "version": "5.26.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "license": "ISC",
+  "author": "",
+  "homepage": "https://github.com/mamayahuhu/ghost-blog#readme",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/mamayahuhu/ghost-blog.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/mamayahuhu/ghost-blog/issues"
   },
-  "homepage": "https://github.com/mamayahuhu/ghost-blog#readme"
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "postinstall": "ghost install --allow-root --no-check-empty --no-prompt --no-stack --no-setup --no-setup-linux-user --db sqlite3 && rm -rvf content && cp -Rf package.json package-lock.json node_modules versions/*/; rm -rf node_modules ; echo 'INSTALL TO versions/*/ DONE' && cp -Rf versions/*/* .; echo 'INSTALL TO PWD DONE' && rm -rf versions current && bash -x bin/aws-s3.sh && bash -x bin/themes.sh",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "casper": "github:TryGhost/Casper#main",
+    "ghost-cli": "1.23.1",
+    "ghost-storage-adapter-s3": "2.8.0",
+    "knex-migrator": "5.0.8",
+    "mysql": "2.18.1"
+  },
+  "devDependencies": {
+    "husky": "8.0.2",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "prettier-package-json": "2.8.0"
+  },
+  "keywords": [
+    "heroku, blog, ghost"
+  ],
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ]
+  }
 }

@@ -21,7 +21,7 @@
   "dependencies": {
     "casper": "github:TryGhost/Casper#main",
     "headline": "github:mamayahuhu/Headline#main",
-    "ghost": "4.48.9",
+    "ghost": "5.26.4",
     "ghost-storage-adapter-s3": "2.8.0",
     "mysql": "2.18.1"
   },

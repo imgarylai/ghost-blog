@@ -13,4 +13,4 @@ ls -l content/
 echo THEMES
 ls -lah content/themes
 
-knex-migrator init --mgpath ./
+# knex-migrator init --mgpath ./

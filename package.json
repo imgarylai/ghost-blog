@@ -35,8 +35,7 @@
     "heroku, blog, ghost"
   ],
   "engines": {
-    "node": "16.x",
-    "npm": "8.x"
+    "node": "14.x"
   },
   "lint-staged": {
     "package.json": [

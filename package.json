@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "casper": "github:TryGhost/Casper#main",
-    "ghost-cli": "1.23.1",
+    "ghost-cli": "1.24.0",
     "ghost-storage-adapter-s3": "2.8.0",
     "headline": "github:mamayahuhu/Headline#feature/i18n-zh",
     "mysql": "2.18.1"

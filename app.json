@@ -14,26 +14,6 @@
       "description": "Complete URL of your app including https (You can change it later in Config Vars)",
       "value": "https://YOURAPPNAME.herokuapp.com"
     },
-    "MAIL_SERVICE" : {
-      "description": "Email service provider",
-      "required": false
-    },
-    "SMTP_SERVER" : {
-      "description": "SMTP server",
-      "required": false
-    },
-    "SMTP_PORT" : {
-      "description": "SMTP port",
-      "required": false
-    },
-    "SMTP_LOGIN" : {
-      "description": "SMTP login",
-      "required": false
-    },
-    "SMTP_PASSWORD" : {
-      "description": "SMTP password",
-      "required": false
-    },
     "S3_ACCESS_KEY_ID": {
       "description": "(Optional) Set your AWS Access Key ID to enable S3 file storage. Defaults to Cloudinary storage",
       "required": false

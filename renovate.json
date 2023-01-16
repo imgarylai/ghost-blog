@@ -1,0 +1,14 @@
+{
+  "automerge": true,
+  "automergeStrategy": "rebase",
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "groupName": "node",
+      "matchPackageNames": ["node"],
+      "enabled": false
+    }
+  ]
+}

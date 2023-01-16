@@ -1,0 +1,51 @@
+{
+  "name": "ghost-blog",
+  "version": "5.30.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "homepage": "https://github.com/mamayahuhu/ghost-blog#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mamayahuhu/ghost-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mamayahuhu/ghost-blog/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf node_modules && rm -rf core && rm -rf components && rm -rf content/themes/* rm .ghost-cli ghost.js LICENSE loggingrc.js MigratorConfig.js PRIVACY.md yarn.lock package-lock.json",
+    "postinstall": "bash -x bin/postinstall.sh",
+    "precommit": "lint-staged",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "casper": "github:TryGhost/Casper#main",
+    "ghost-cli": "1.24.0",
+    "ghost-storage-adapter-s3": "2.8.0",
+    "headline": "github:imgarylai/Headline#feature/i18n-zh",
+    "mysql": "2.18.1"
+  },
+  "devDependencies": {
+    "husky": "8.0.3",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.2",
+    "prettier-package-json": "2.8.0"
+  },
+  "keywords": [
+    "heroku, blog, ghost"
+  ],
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "lint-staged": {
+    "package.json": [
+      "prettier-package-json --write",
+      "git add"
+    ]
+  }
+}

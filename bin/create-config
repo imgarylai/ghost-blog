@@ -38,11 +38,10 @@ function createConfig() {
     mail: {
       transport: "SMTP",
       options: {
-        service: envValues.mail.service,
-        host: envValues.mail.host,
+        service: "Mailgun",
         auth: {
-          user: envValues.mail.user,
-          pass: envValues.mail.pass,
+          user: process.env.MAILGUN_SMTP_LOGIN,
+          pass: process.env.MAILGUN_SMTP_PASSWORD,
         },
       },
     },

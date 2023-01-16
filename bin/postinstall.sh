@@ -1,5 +1,4 @@
 ghost install --allow-root --no-check-empty --no-prompt --no-stack --no-setup --no-setup-linux-user --db sqlite3
-bin/sync-package-json
 cp -Rf package.json package-lock.json node_modules versions/*/
 echo 'INSTALL TO versions/*/ DONE'
 cp -Rf versions/*/* .

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "casper": "github:TryGhost/Casper#main",
+    "ease": "github:TryGhost/Ease#main",
     "ghost-cli": "1.24.1",
     "ghost-storage-adapter-s3": "2.8.0",
     "headline": "github:imgarylai/Headline#feature/i18n-zh",

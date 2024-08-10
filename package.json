@@ -22,7 +22,7 @@
   "dependencies": {
     "casper": "github:TryGhost/Casper#main",
     "ease": "github:TryGhost/Ease#main",
-    "ghost-cli": "1.25.3",
+    "ghost-cli": "1.26.1",
     "ghost-storage-adapter-s3": "2.8.0",
     "headline": "github:imgarylai/Headline#feature/i18n-zh",
     "mysql": "2.18.1"

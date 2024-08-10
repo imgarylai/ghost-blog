@@ -2,6 +2,7 @@ themes=(
   casper
 	headline
 	ease
+	source
 )
 
 for theme in "${themes[@]}"

@@ -3,7 +3,7 @@
   "description": "Deploy latest Ghost v5 on Heroku",
   "logo": "https://ghost.org/favicon.ico",
   "repository": "https://github.com/imgarylai/ghost-blog",
-  "stack": "heroku-22",
+  "stack": "heroku-24",
   "scripts": {
     "postdeploy": "bin/init-deployment"
   },

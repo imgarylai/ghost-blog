@@ -1,0 +1,85 @@
+name: Ghost Version Update Check
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # Run weekly at midnight UTC on Monday
+
+jobs:
+  check-ghost-update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Ghost version
+        id: check-version
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          LATEST_VERSION=$(npm view ghost@5 version)
+
+          echo "Current version: $CURRENT_VERSION"
+          echo "Latest version: $LATEST_VERSION"
+
+          if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
+            echo "::set-output name=needs_update::true"
+            echo "::set-output name=current_version::$CURRENT_VERSION"
+            echo "::set-output name=latest_version::$LATEST_VERSION"
+          else
+            echo "::set-output name=needs_update::false"
+          fi
+
+      - name: Close existing PRs
+        if: steps.check-version.outputs.needs_update == 'true'
+        run: |
+          # Get all open PRs with our branch name
+          PR_NUMBERS=$(gh pr list --head update-ghost-version --state open --json number --jq '.[].number')
+
+          # Close each PR
+          for pr_number in $PR_NUMBERS; do
+            echo "Closing PR #$pr_number"
+            gh pr close $pr_number --comment "Closing in favor of newer Ghost version update"
+          done
+
+      - name: Update versions
+        if: steps.check-version.outputs.needs_update == 'true'
+        run: |
+          # Update package.json version
+          npm version ${{ steps.check-version.outputs.latest_version }} --no-git-tag-version
+
+          # Update postinstall.sh version
+          sed -i "s/ghost install [0-9.]*/ghost install ${{ steps.check-version.outputs.latest_version }}/" bin/postinstall.sh
+
+      - name: Create Pull Request
+        if: steps.check-version.outputs.needs_update == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: update Ghost to version ${{ steps.check-version.outputs.latest_version }}"
+          title: "Update Ghost to version ${{ steps.check-version.outputs.latest_version }}"
+          body: |
+            This PR updates Ghost from version ${{ steps.check-version.outputs.current_version }} to ${{ steps.check-version.outputs.latest_version }}.
+
+            ### Changes
+            - Updated Ghost version in package.json
+            - Updated Ghost version in bin/postinstall.sh
+
+            ### Testing
+            Please test the following after deployment:
+            - [ ] Blog loads correctly
+            - [ ] Admin panel is accessible
+            - [ ] Posts are displayed properly
+            - [ ] Images are loading
+            - [ ] No console errors
+
+            ### Notes
+            This update was automatically created by the GitHub Actions workflow.
+          branch: update-ghost-version
+          delete-branch: true

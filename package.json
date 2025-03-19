@@ -1,6 +1,6 @@
 {
   "name": "ghost-blog",
-  "version": "5.113.0",
+  "version": "5.101.0",
   "description": "",
   "license": "ISC",
   "author": "",
@@ -22,11 +22,11 @@
   "dependencies": {
     "casper": "github:TryGhost/Casper#main",
     "ease": "github:TryGhost/Ease#main",
+    "source": "github:TryGhost/Source#main",
     "ghost-cli": "1.26.1",
     "ghost-storage-adapter-s3": "2.8.0",
     "headline": "github:imgarylai/Headline#feature/i18n-zh",
-    "mysql": "2.18.1",
-    "source": "github:TryGhost/Source#main"
+    "mysql": "2.18.1"
   },
   "devDependencies": {
     "husky": "9.1.6",

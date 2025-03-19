@@ -11,6 +11,7 @@
     },
     {
       "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "non-major dependencies",
       "automerge": true,
       "schedule": ["every weekend"]
     }

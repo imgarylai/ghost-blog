@@ -1,103 +1,127 @@
-&nbsp;
-<p align="center">
-  <a href="https://ghost.org/#gh-light-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/65487235/157884383-1b75feb1-45d8-4430-b636-3f7e06577347.png" alt="Ghost" width="200px">
-  </a>
-  <a href="https://ghost.org/#gh-dark-mode-only" target="_blank">
-    <img src="https://user-images.githubusercontent.com/65487235/157849205-aa24152c-4610-4d7d-b752-3a8c4f9319e6.png" alt="Ghost" width="200px">
-  </a>
-</p>
-&nbsp;
+# Ghost Blog on Heroku
 
-<p align="center">
-    <a href="https://ghost.org/">Ghost.org</a> •
-    <a href="https://forum.ghost.org">Forum</a> •
-    <a href="https://ghost.org/docs/">Docs</a> •
-    <a href="https://github.com/TryGhost/Ghost/blob/main/.github/CONTRIBUTING.md">Contributing</a> •
-    <a href="https://twitter.com/ghost">Twitter</a>
-    <br /><br />
-    <a href="https://ghost.org/">
-        <img src="https://img.shields.io/badge/downloads-3M-brightgreen.svg" alt="Downloads" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/releases/">
-        <img src="https://img.shields.io/github/release/TryGhost/Ghost.svg" alt="Latest release" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/actions">
-        <img src="https://github.com/TryGhost/Ghost/workflows/Test%20Suite/badge.svg?branch=main" alt="Build status" />
-    </a>
-    <a href="https://github.com/TryGhost/Ghost/contributors/">
-        <img src="https://img.shields.io/github/contributors/TryGhost/Ghost.svg" alt="Contributors" />
-    </a>
-</p>
-<p align="center">
-  Love open source? <a href="https://careers.ghost.org">We're hiring</a> JavaScript engineers to work on Ghost full-time.
-</p>
+Deploy [Ghost](https://ghost.org/) (v5) blogging platform on Heroku with just one click. This repository provides a streamlined way to get your Ghost blog running on Heroku with minimal configuration.
 
-&nbsp;
+## Quick Deploy
 
-<a href="https://ghost.org/"><img src="https://user-images.githubusercontent.com/353959/169805900-66be5b89-0859-4816-8da9-528ed7534704.png" alt="Fiercely independent, professional publishing. Ghost is the most popular open source, headless Node.js CMS which already works with all the tools you know and love." /></a>
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-&nbsp;
+## Features
 
-<a href="https://ghost.org/pricing/#gh-light-mode-only" target="_blank"><img src="https://user-images.githubusercontent.com/65487235/157849437-9b8fcc48-1920-4b26-a1e8-5806db0e6bb9.png" alt="Ghost(Pro)" width="165px" /></a>
-<a href="https://ghost.org/pricing/#gh-dark-mode-only" target="_blank"><img src="https://user-images.githubusercontent.com/65487235/157849438-79889b04-b7b6-4ba7-8de6-4c1e4b4e16a5.png" alt="Ghost(Pro)" width="165px" /></a>
+- Latest Ghost v5 support
+- Automatic database setup (JawsDB MySQL)
+- Built-in email service (Mailgun)
+- Optional AWS S3 storage support
+- Heroku Stack 24
+- Automatic post-deployment configuration
 
-The easiest way to get a production instance deployed is with our official **[Ghost(Pro)](https://ghost.org/pricing/)** managed service. It takes about 2 minutes to launch a new site with worldwide CDN, backups, security and maintenance all done for you.
+## Prerequisites
 
-For most people this ends up being the best value option cause of [how much time it saves](https://ghost.org/docs/hosting/) — and 100% of revenue goes to the Ghost Foundation; funding the maintenance and further development of the project itself. So you’ll be supporting open source software *and* getting a great service!
+- A Heroku account
+- (Optional) AWS S3 account for file storage
 
-&nbsp;
+## Heroku Configuration
 
-# Quickstart install
+When deploying through the deploy button, you'll be prompted to configure the following:
 
-If you want to run your own instance of Ghost, in most cases the best way is to use our **CLI tool**
+### Required Configuration
 
-```
-npm install ghost-cli -g
-```
+| Variable                | Description                              | Default                           |
+| ----------------------- | ---------------------------------------- | --------------------------------- |
+| `APP_PUBLIC_URL`        | Complete URL of your app including https | https://YOURAPPNAME.herokuapp.com |
+| `NPM_CONFIG_PRODUCTION` | Required to fix npm dev dependencies     | false                             |
 
-&nbsp;
+### Optional S3 Storage Configuration
 
-Then, if installing locally add the `local` flag to get up and running in under a minute - [Local install docs](https://ghost.org/docs/install/local/)
+| Variable               | Description                           | Required |
+| ---------------------- | ------------------------------------- | -------- |
+| `S3_ACCESS_KEY_ID`     | AWS Access Key ID for S3 file storage | No       |
+| `S3_ACCESS_SECRET_KEY` | AWS Access Secret Key                 | No       |
+| `S3_BUCKET_NAME`       | Name of your S3 bucket                | No       |
+| `S3_BUCKET_REGION`     | Region of your S3 bucket              | No       |
+| `S3_ASSET_HOST_URL`    | Custom CDN asset host URL             | No       |
 
-```
-ghost install local
+### Automatic Add-ons
+
+The following add-ons are automatically provisioned:
+
+- **JawsDB**: MySQL database for Ghost
+- **Mailgun**: Email service for newsletters and notifications
+
+## Manual Installation
+
+1. Clone this repository:
+
+```bash
+git clone https://github.com/imgarylai/ghost-blog.git
+cd ghost-blog
 ```
 
-&nbsp;
+2. Create a new Heroku app:
 
-or on a server run the full install, including automatic SSL setup using LetsEncrypt - [Production install docs](https://ghost.org/docs/install/ubuntu/)
-
-```
-ghost install
+```bash
+heroku create your-app-name
 ```
 
-&nbsp;
+3. Add required add-ons:
 
-Check out our [official documentation](https://ghost.org/docs/) for more information about our [recommended hosting stack](https://ghost.org/docs/hosting/) & properly [upgrading Ghost](https://ghost.org/docs/update/), plus everything you need to develop your own Ghost [themes](https://ghost.org/docs/themes/) or work with [our API](https://ghost.org/docs/content-api/).
+```bash
+heroku addons:create jawsdb
+heroku addons:create mailgun
+```
 
-### Contributors & advanced developers
+4. Configure environment variables:
 
-For anyone wishing to contribute to Ghost or to hack/customize core files we recommend following our full development setup guides: [Contributor guide](https://ghost.org/docs/contributing/) • [Developer setup](https://ghost.org/docs/install/source/)
+```bash
+heroku config:set APP_PUBLIC_URL=https://your-app-name.herokuapp.com
+heroku config:set NPM_CONFIG_PRODUCTION=false
+```
 
-&nbsp;
+5. (Optional) Configure S3 storage:
 
-# Ghost sponsors
+```bash
+heroku config:set S3_ACCESS_KEY_ID=your_access_key
+heroku config:set S3_ACCESS_SECRET_KEY=your_secret_key
+heroku config:set S3_BUCKET_NAME=your_bucket_name
+heroku config:set S3_BUCKET_REGION=your_bucket_region
+```
 
-We'd like to extend big thanks to our sponsors and partners who make Ghost possible. If you're interested in sponsoring Ghost and supporting the project, please check out our profile on [GitHub sponsors](https://github.com/sponsors/TryGhost) :heart:
+6. Deploy to Heroku:
 
-**[DigitalOcean](https://m.do.co/c/9ff29836d717)** • **[Fastly](https://www.fastly.com/)**
+```bash
+git push heroku main
+```
 
-&nbsp;
+## Post-Installation
 
-# Getting help
+1. After deployment, visit `https://your-app-name.herokuapp.com/ghost` to set up your admin account
+2. Complete the initial Ghost setup process
+3. Start writing and publishing!
 
-You can find answers to a huge variety of questions, along with a large community of helpful developers over on the [Ghost forum](https://forum.ghost.org/) - replies are generally very quick. **Ghost(Pro)** customers also have access to 24/7 email support.
+## File Storage Options
 
-To stay up to date with all the latest news and product updates, make sure you [subscribe to our blog](https://ghost.org/blog/) — or you can always follow us [on Twitter](https://twitter.com/Ghost), if you prefer your updates bite-sized and facetious. :saxophone::turtle:
+By default, the app will use Cloudinary for file storage. If you want to use AWS S3:
 
-&nbsp;
+1. Create an S3 bucket in your AWS account
+2. Configure CORS settings for your bucket
+3. Set up the S3 environment variables listed above
+4. Files will automatically be stored in your S3 bucket
 
-# Copyright & license
+## Troubleshooting
 
-Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE). Ghost and the Ghost Logo are trademarks of Ghost Foundation Ltd. Please see our [trademark policy](https://ghost.org/trademark/) for info on acceptable usage.
+- If images aren't uploading, verify your S3 configuration
+- For database issues, check JawsDB connection settings
+- Visit the [Ghost Forum](https://forum.ghost.org/) for additional support
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+- [Ghost](https://ghost.org/) - The professional publishing platform
+- [Heroku](https://heroku.com/) - Cloud platform service

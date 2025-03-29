@@ -3,9 +3,6 @@ name: Ghost Version Update Check
 on:
   schedule:
     - cron: "0 0 * * 1" # Run weekly at midnight UTC on Monday
-  push:
-    branches:
-      - main
 
 jobs:
   check-ghost-update:

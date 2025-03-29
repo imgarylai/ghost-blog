@@ -30,15 +30,17 @@ jobs:
           echo "Latest version: $LATEST_VERSION"
 
           if [ "$CURRENT_VERSION" != "$LATEST_VERSION" ]; then
-            echo "::set-output name=needs_update::true"
-            echo "::set-output name=current_version::$CURRENT_VERSION"
-            echo "::set-output name=latest_version::$LATEST_VERSION"
+            echo "needs_update=true" >> $GITHUB_OUTPUT
+            echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+            echo "latest_version=$LATEST_VERSION" >> $GITHUB_OUTPUT
           else
-            echo "::set-output name=needs_update::false"
+            echo "needs_update=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Close existing PRs
         if: steps.check-version.outputs.needs_update == 'true'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           # Get all open PRs with our branch name
           PR_NUMBERS=$(gh pr list --head update-ghost-version --state open --json number --jq '.[].number')

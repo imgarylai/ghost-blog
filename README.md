@@ -1,6 +1,6 @@
 # Ghost Blog on Heroku
 
-Deploy [Ghost](https://ghost.org/) (v5) blogging platform on Heroku with just one click. This repository provides a streamlined way to get your Ghost blog running on Heroku with minimal configuration.
+Deploy [Ghost](https://ghost.org/) (v6) blogging platform on Heroku with just one click. This repository provides a streamlined way to get your Ghost blog running on Heroku with minimal configuration.
 
 ## Quick Deploy
 
@@ -8,7 +8,7 @@ Deploy [Ghost](https://ghost.org/) (v5) blogging platform on Heroku with just on
 
 ## Features
 
-- Latest Ghost v5 support
+- Latest Ghost v6 support
 - Automatic database setup (JawsDB MySQL)
 - Built-in email service (Mailgun)
 - Optional AWS S3 storage support

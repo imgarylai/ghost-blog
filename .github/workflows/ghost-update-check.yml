@@ -24,7 +24,7 @@ jobs:
         id: check-version
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
-          LATEST_VERSION=$(npm view ghost versions --json | jq -r '[.[] | select(startswith("6."))] | max_by(split(".") | map(tonumber))')
+          LATEST_VERSION=$(npm view ghost versions --json | jq -r '[.[] | select(startswith("6.")) | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))] | max_by(split(".") | map(tonumber))')
 
           echo "Current version: $CURRENT_VERSION"
           echo "Latest version: $LATEST_VERSION"

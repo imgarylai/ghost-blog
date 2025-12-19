@@ -4,13 +4,13 @@
   "description": "",
   "license": "ISC",
   "author": "",
-  "homepage": "https://github.com/mamayahuhu/ghost-blog#readme",
+  "homepage": "https://github.com/imgarylai/ghost-blog#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/mamayahuhu/ghost-blog.git"
+    "url": "git+ssh://git@github.com/imgarylai/ghost-blog.git"
   },
   "bugs": {
-    "url": "https://github.com/mamayahuhu/ghost-blog/issues"
+    "url": "https://github.com/imgarylai/ghost-blog/issues"
   },
   "main": "index.js",
   "scripts": {

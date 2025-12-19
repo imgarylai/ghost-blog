@@ -1,6 +1,6 @@
 {
-  "name": "Deploy Ghost V5 on Heroku",
-  "description": "Deploy latest Ghost v5 on Heroku",
+  "name": "Deploy Ghost V6 on Heroku",
+  "description": "Deploy latest Ghost v6 on Heroku",
   "logo": "https://ghost.org/favicon.ico",
   "repository": "https://github.com/imgarylai/ghost-blog",
   "stack": "heroku-24",

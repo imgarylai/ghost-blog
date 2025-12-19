@@ -13,4 +13,4 @@ ls -l content/
 echo THEMES
 ls -lah content/themes
 
-knex-migrator init --mgpath node_modules/ghost
+node_modules/.bin/knex-migrator init --mgpath .

@@ -4,7 +4,7 @@ Deploy [Ghost](https://ghost.org/) (v6) blogging platform on Heroku with just on
 
 ## Quick Deploy
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/imgarylai/ghost-blog)
 
 ## Features
 

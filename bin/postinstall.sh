@@ -8,7 +8,10 @@ for item in /app/build/versions/"$GHOST_VERSION"/*; do
   cp -Rf "$item" .
 done
 # Merge Ghost's node_modules into user's (--remove-destination handles symlink vs directory conflicts)
+# dotglob ensures .pnpm directory is included (pnpm symlinks depend on it)
+shopt -s dotglob
 cp -Rf --remove-destination /app/build/versions/"$GHOST_VERSION"/node_modules/* node_modules/
+shopt -u dotglob
 rm -rf /app/build
 echo 'INSTALL TO PWD DONE'
 bash -x bin/aws-s3.sh

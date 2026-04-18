@@ -26,7 +26,7 @@
     "ghost-cli": "1.29.1",
     "ghost-storage-adapter-s3": "2.8.0",
     "headline": "github:imgarylai/Headline#feature/i18n-zh",
-    "mysql": "2.18.1"
+    "mysql2": "3.18.1"
   },
   "devDependencies": {
     "husky": "9.1.7",

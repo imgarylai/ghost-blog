@@ -28,9 +28,13 @@ rm -rf node_modules
 mv "$BUILD_VER_DIR/node_modules" node_modules
 
 # Bring Ghost's generated code files (ghost.js, core/, index.js, …) into the repo
-# root — everything except node_modules, which was already moved above.
+# root, but keep our own package.json / package-lock.json — they carry the "start"
+# script, engines and dependency set, whereas Ghost's package.json has no start
+# script. node_modules was already moved above.
 for item in "$BUILD_VER_DIR"/*; do
-  [ "$(basename "$item")" = "node_modules" ] && continue
+  case "$(basename "$item")" in
+    node_modules|package.json|package-lock.json) continue ;;
+  esac
   cp -Rf "$item" . 2>/dev/null || true
 done
 rm -rf /app/build

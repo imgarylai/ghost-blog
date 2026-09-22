@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GHOST_VERSION=6.52.0
+GHOST_VERSION=6.65.0
 
 # Ghost 6.30+ ships a pnpm-managed dependency tree and ghost-cli shells out to
 # pnpm during install, so pnpm must be on PATH first (otherwise: spawn pnpm ENOENT).

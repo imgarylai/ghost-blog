@@ -7,7 +7,9 @@ GHOST_VERSION=6.65.0
 # pnpm during install, so pnpm must be on PATH first (otherwise: spawn pnpm ENOENT).
 npm install -g pnpm
 
-ghost install "$GHOST_VERSION" --dir /app/build --allow-root --no-check-empty --no-prompt --no-stack --no-setup --no-setup-linux-user --db sqlite3
+# Production uses remote MySQL. No database connection is made with --no-setup;
+# the placeholder host avoids checking for a local MySQL service during build.
+ghost install "$GHOST_VERSION" --dir /app/build --allow-root --no-check-empty --no-prompt --no-stack --no-setup --no-setup-linux-user --db mysql --dbhost heroku-build.invalid
 echo 'GHOST INSTALL DONE'
 
 # Resolve the actual installed version dir (robust to version-string normalization).
